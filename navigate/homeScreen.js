@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native'
+import { View, StyleSheet} from 'react-native'
 
-import ButtonGroup from '../component/buttonGroup'
+// import 
+import Tap from '../component/tap'
+import NavBar from '../component/navBar'
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -11,7 +13,10 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View>
-        <ButtonGroup />
+        {/* <NavBar /> */}
+        <View style={{height: 500}}>
+        </View>
+        <Tap />
       </View>
     );
   }
