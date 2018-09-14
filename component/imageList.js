@@ -8,8 +8,10 @@ import {
 
 export default class Lattice extends React.Component{
   render(){
-    return ({
-
-    });
+    return (
+      <View>
+        
+      </View>
+    );
   }
 }
