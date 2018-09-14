@@ -17,11 +17,11 @@ class TapButtonGroup extends React.Component {
           />
           <Button 
             title="Upload" 
-            onPress={() => this.props.navigation.navigate('Home')}
+            onPress={() => this.props.navigation.navigate('Upload')}
           />
           <Button 
             title="Mypage" 
-            onPress={() => this.props.navigation.navigate('Home')}
+            onPress={() => this.props.navigation.navigate('Mypage')}
           />
         </View>
       </View>
