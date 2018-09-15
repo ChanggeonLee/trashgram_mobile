@@ -8,29 +8,27 @@ import ImageList from '../component/imageList'
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    title: 'Home',
+    title: 'trashgram',
   };
 
-  state = {info: []}
-
-  async componentDidMount() {
-    
-    const response = await fetch('http://localhost:3000/')
-    const info  = await response.json()
-    this.setState({info: info})
-  }
+ 
   
   render() {
     return (
-      <View>
+      <View style={ styles.container}>        
         <ImageList />
-        <View>
-          {
-            this.state.info.map( info => {return <Text key={info.data}>{info.data}</Text>} )
-          }
-        </View>
+      
         <Tap />
       </View>
     );
   }
 }
+
+
+const styles = StyleSheet.create({
+  container:
+    {
+        flex: 1,
+        width: '100%',         
+    },
+});

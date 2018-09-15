@@ -12,9 +12,9 @@ import CameraTest from './cameraTest'
 
 const RootStack = StackNavigator(
   {
-    Intro: {
-      screen: IntroScreen,
-    },
+    // Intro: {
+    //   screen: IntroScreen,
+    // },
     Home: {
       screen: HomeScreen,
     },

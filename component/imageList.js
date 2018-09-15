@@ -10,9 +10,19 @@ import {
 import Image from './image'
 
 export default class Lattice extends React.Component{
+  // state = {info: []}
+
+  // async componentDidMount() {
+    
+  //   const response = await fetch('http://localhost:3000/')
+  //   const info  = await response.json()
+  //   this.setState({info: info})
+  // }
+
+
   render(){
-    return (      
-      <ScrollView style={styles.buttonGroup}>
+    return (       
+      <ScrollView style={styles.container}>
         <View style={{flex: 1, flexDirection: 'row'}}>
           <Image />
           <Image />
@@ -32,7 +42,32 @@ export default class Lattice extends React.Component{
         <View style={{flex: 1, flexDirection: 'row'}}>
           <Image />
           <Image />
-        </View>
+        </View>  
+        <View style={{flex: 1, flexDirection: 'row'}}>
+          <Image />
+          <Image />
+        </View>   
+        <View style={{flex: 1, flexDirection: 'row'}}>
+          <Image />
+          <Image />
+        </View>   
+        <View style={{flex: 1, flexDirection: 'row'}}>
+          <Image />
+          <Image />
+        </View>   
+        <View style={{flex: 1, flexDirection: 'row'}}>
+          <Image />
+          <Image />
+        </View>                 
+        <View style={{flex: 1, flexDirection: 'row'}}>
+          <Image />
+          <Image />
+        </View>  
+        {/* <View>
+          {
+            this.state.info.map( info => {return <Text key={info.data}>{info.data}</Text>} )
+          }
+        </View>          */}
       </ScrollView>
     );
   }
@@ -40,12 +75,6 @@ export default class Lattice extends React.Component{
 
 const styles = StyleSheet.create({
   container: {
-   flex: 1,
-   paddingTop: 22
-  },
-  item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44,
+    height: 300,
   },
 })
