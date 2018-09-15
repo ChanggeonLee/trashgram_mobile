@@ -23,46 +23,22 @@ export default class Lattice extends React.Component{
   render(){
     return (       
       <ScrollView style={styles.container}>
-        <View style={{flex: 1, flexDirection: 'row'}}>
+        <View style={styles.imgRow}>
           <Image />
           <Image />
         </View>
-        <View style={{flex: 1, flexDirection: 'row'}}>
+        <View style={styles.imgRow}>
           <Image />
           <Image />
         </View>
-        <View style={{flex: 1, flexDirection: 'row'}}>
+        <View style={styles.imgRow}>
           <Image />
           <Image />
         </View>
-        <View style={{flex: 1, flexDirection: 'row'}}>
+        <View style={styles.imgRow}>
           <Image />
           <Image />
         </View>
-        <View style={{flex: 1, flexDirection: 'row'}}>
-          <Image />
-          <Image />
-        </View>  
-        <View style={{flex: 1, flexDirection: 'row'}}>
-          <Image />
-          <Image />
-        </View>   
-        <View style={{flex: 1, flexDirection: 'row'}}>
-          <Image />
-          <Image />
-        </View>   
-        <View style={{flex: 1, flexDirection: 'row'}}>
-          <Image />
-          <Image />
-        </View>   
-        <View style={{flex: 1, flexDirection: 'row'}}>
-          <Image />
-          <Image />
-        </View>                 
-        <View style={{flex: 1, flexDirection: 'row'}}>
-          <Image />
-          <Image />
-        </View>  
         {/* <View>
           {
             this.state.info.map( info => {return <Text key={info.data}>{info.data}</Text>} )
@@ -75,6 +51,10 @@ export default class Lattice extends React.Component{
 
 const styles = StyleSheet.create({
   container: {
-    height: 300,
+    
   },
+  imgRow:{
+    flex: 1,
+    flexDirection: 'row',
+  }
 })

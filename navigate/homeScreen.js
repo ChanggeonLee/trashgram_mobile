@@ -11,19 +11,15 @@ export default class HomeScreen extends React.Component {
     title: 'trashgram',
   };
 
- 
-  
   render() {
     return (
       <View style={ styles.container}>        
         <ImageList />
-      
         <Tap />
       </View>
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   container:

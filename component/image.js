@@ -2,13 +2,17 @@ import React from 'react'
 import {
   View,
   StyleSheet,
+  Image
 } from 'react-native'
 
 
 export default class Lattice extends React.Component{
   render(){
     return (
-      <View style={styles.image}></View>
+      <Image
+          style={styles.image}
+          source={require('../src/img/testImg.png')}
+      />
     );
   }
 }
@@ -16,8 +20,8 @@ export default class Lattice extends React.Component{
 const styles = StyleSheet.create({
   image: {
     flex: 1,
-    height: 100, 
+    height: 200, 
     borderWidth: 0.5,
-    backgroundColor: 'gray'
+    // backgroundColor: 'gray'
   },
 })
