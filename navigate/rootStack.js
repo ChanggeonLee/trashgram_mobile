@@ -6,6 +6,7 @@ import CityScreen from './cityScreen'
 import LoginScreen from './loginScreen'
 import MypageScreen from './mypageScreen'
 import UploadScreen from './uploadScreen'
+import ImageTest from './imageTest'
 
 
 const RootStack = StackNavigator(
@@ -29,7 +30,7 @@ const RootStack = StackNavigator(
       screen: MypageScreen,
     },
     Upload: {
-      screen: UploadScreen,
+      screen: ImageTest,
     }
   },
   {
