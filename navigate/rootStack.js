@@ -7,6 +7,7 @@ import LoginScreen from './loginScreen'
 import MypageScreen from './mypageScreen'
 import UploadScreen from './uploadScreen'
 import ImageTest from './imageTest'
+import CameraTest from './cameraTest'
 
 
 const RootStack = StackNavigator(
@@ -30,7 +31,7 @@ const RootStack = StackNavigator(
       screen: MypageScreen,
     },
     Upload: {
-      screen: ImageTest,
+      screen: CameraTest,
     }
   },
   {
