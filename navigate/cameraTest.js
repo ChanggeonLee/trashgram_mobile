@@ -8,19 +8,21 @@ import {
 } from 'react-native';
 
 import Camera from 'react-native-camera';
+import Tap from '../component/tap'
 
 export default class MyCamera extends Component {
   render() {
     return (
       <View style={styles.container}>
-       <Camera
-           ref={(cam) => {
-             this.camera = cam;
-           }}
-           style={styles.preview}
-           aspect={Camera.constants.Aspect.fill}>
-           <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
-       </Camera>
+        <Camera
+            ref={(cam) => {
+              this.camera = cam;
+            }}
+            style={styles.preview}
+            aspect={Camera.constants.Aspect.fill}>
+            <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
+        </Camera>
+        <Tap />
       </View>
     );
   }

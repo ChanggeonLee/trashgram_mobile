@@ -2,10 +2,6 @@ import React from 'react';
 import { View, Text, Button } from 'react-native'
 
 export default class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Home',
-  };
-
   post_server(){
     fetch('http://localhost:3000/', {
       method: 'POST',

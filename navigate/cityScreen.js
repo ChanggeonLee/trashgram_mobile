@@ -5,10 +5,6 @@ import Graph from '../component/graph'
 import Tap   from '../component/tap'
 
 export default class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'trashgram',
-  };
-
   render() {
     return (
       <View style={ styles.container}>

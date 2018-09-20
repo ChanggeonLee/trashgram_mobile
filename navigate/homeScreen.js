@@ -7,10 +7,6 @@ import NavBar from '../component/navBar'
 import ImageList from '../component/imageList'
 
 export default class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'trashgram',
-  };
-
   render() {
     return (
       <View style={ styles.container}>        
