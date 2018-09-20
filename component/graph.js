@@ -1,55 +1,48 @@
 import React from 'react'
-import { StackedBarChart } from 'react-native-svg-charts'
- 
-export default class StackedBarChartExample extends React.PureComponent {
- 
+import { View } from 'react-native'
+import { BarChart, Grid } from 'react-native-svg-charts'
+import { Text } from 'react-native-svg'
+
+class BarChartVerticalWithLabels extends React.PureComponent {
+
     render() {
- 
-        const data = [
-            {
-                month: new Date(2015, 0, 1),
-                apples: 3840,
-                bananas: 1920,
-                cherries: 960,
-                dates: 400,
-                oranges: 400,
-            },
-            {
-                month: new Date(2015, 1, 1),
-                apples: 1600,
-                bananas: 1440,
-                cherries: 960,
-                dates: 400,
-            },
-            {
-                month: new Date(2015, 2, 1),
-                apples: 640,
-                bananas: 960,
-                cherries: 3640,
-                dates: 400,
-            },
-            {
-                month: new Date(2015, 3, 1),
-                apples: 3320,
-                bananas: 480,
-                cherries: 640,
-                dates: 400,
-            },
-        ]
- 
-        const colors = [ '#7b4173', '#a55194', '#ce6dbd', '#de9ed6' ]
-        const keys   = [ 'apples', 'bananas', 'cherries', 'dates' ]
- 
+
+        const data = [ 10, 5, 25, 15, 20 ]
+
+        const CUT_OFF = 20
+        const Labels = ({ x, y, bandwidth, data }) => (
+            data.map((value, index) => (
+                <Text
+                    key={ index }
+                    x={ x(index) + (bandwidth / 2) }
+                    y={ value < CUT_OFF ? y(value) - 10 : y(value) + 15 }
+                    fontSize={ 14 }
+                    fill={ value >= CUT_OFF ? 'white' : 'black' }
+                    alignmentBaseline={ 'middle' }
+                    textAnchor={ 'middle' }
+                >
+                    {value}
+                </Text>
+            ))
+        )
+
         return (
-            <StackedBarChart
-                style={ { height: 200 } }
-                keys={ keys }
-                colors={ colors }
-                data={ data }
-                showGrid={ false }
-                contentInset={ { top: 30, bottom: 30 } }
-            />
+            <View style={{ flexDirection: 'row', height: 300, paddingVertical: 16 }}>
+                <BarChart
+                    style={{ flex: 1 }}
+                    data={data}
+                    svg={{ fill: 'rgba(134, 65, 244, 0.8)' }}
+                    contentInset={{ top: 10, bottom: 10 }}
+                    spacing={0.2}
+                    gridMin={0}
+                >
+                    <Grid direction={Grid.Direction.HORIZONTAL}/>
+                    <Labels/>
+                </BarChart>
+            </View>
         )
     }
- 
+
 }
+
+export default BarChartVerticalWithLabels

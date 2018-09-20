@@ -33,6 +33,9 @@ const styles = StyleSheet.create({
   container: {
     height: 50,
     backgroundColor: 'white',
+    width:'100%',
+    position: 'absolute',
+    bottom: 0
   },
   buttonGroup: {
     flex: 1, 
