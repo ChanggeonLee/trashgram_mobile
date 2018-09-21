@@ -9,7 +9,8 @@ import ImageList from '../component/imageList'
 export default class HomeScreen extends React.Component {
   render() {
     return (
-      <View style={ styles.container}>        
+      <View style={ styles.container}>  
+        <NavBar />      
         <ImageList />
         <Tap />
       </View>

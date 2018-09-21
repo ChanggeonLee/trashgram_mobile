@@ -1,7 +1,7 @@
-import { StackNavigator } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation'
 import MainStack from './mainStack.js'
 
-const RootStack = StackNavigator(
+const RootStack = createStackNavigator(
   {
     Main: {
       screen: MainStack,
