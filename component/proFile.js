@@ -1,9 +1,10 @@
 import React from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native'
+import { withNavigation } from 'react-navigation'
 
 import ProFileImage from '../component/profileImage'
 
-export default class ProFile extends React.Component {
+class ProFile extends React.Component {
   render(){
     return (
       <View style={styles.container}>
@@ -14,7 +15,7 @@ export default class ProFile extends React.Component {
           <Text style={styles.info}>
             안녕하세요 레드벨벳 덕후 이똥땅 입니다.
           </Text>
-          <Button title="회원 탙퇴" style={styles.button}/>
+          <Button title="회원 탙퇴" style={styles.button} onPress={() => this.props.navigation.navigate('Home')}/>
         </View>        
       </View>
     )
@@ -37,3 +38,5 @@ const styles = StyleSheet.create({
     marginLeft:20,
   },
 });
+
+export default withNavigation (ProFile);

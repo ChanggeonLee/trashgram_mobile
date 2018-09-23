@@ -4,7 +4,8 @@ import {
   StyleSheet,
   Text,
   Dimensions,
-  View
+  View,
+  Image,
 } from 'react-native';
 
 import Camera from 'react-native-camera';
@@ -20,7 +21,8 @@ export default class MyCamera extends Component {
             }}
             style={styles.preview}
             aspect={Camera.constants.Aspect.fill}>
-            <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
+            {/* <Image style={styles.capture} source={require('../src/img/camera.png')} onPress={this.takePicture.bind(this)}/> */}
+            <Text style={styles.capture}  onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
         </Camera>
         <Tap />
       </View>
@@ -49,11 +51,13 @@ const styles = StyleSheet.create({
    width: Dimensions.get('window').width
  },
   capture: {
+    height:50,
+    width: 50,
     flex: 0,
     backgroundColor: '#fff',
     borderRadius: 5,
-    color: '#000',
+    // color: '#000',
     padding: 10,
-    margin: 40
+    margin: 60
   }
 });
