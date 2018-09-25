@@ -41,9 +41,8 @@ class Camera extends Component {
   takePicture = async function() {
     if (this.camera) {
       const options = { quality: 0.5, base64: false };
-      const data = await this.camera.takePictureAsync(options)
-      this.props.navigation.navigate('Mypage')
-      // console.log(data.uri);      
+      const data = await this.camera.takePictureAsync(options);
+      this.props.navigation.navigate('Upload', {img:data});
     }
   };
 }

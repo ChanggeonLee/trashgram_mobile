@@ -1,38 +1,27 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, Image, StyleSheet } from 'react-native'
 
-export default class HomeScreen extends React.Component {
-  post_server(){
-    fetch('http://localhost:3000/', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        firstParam: 'test',
-        secondParam: 'test',
-      }),
-    });
-  }
+import Tap from '../component/tap'
+import NavBar from '../component/navBar'
+import UploadImage from '../component/uploadImage'
 
+export default class UploadScreen extends React.Component {
   render() {
     return (
-      <View style={{flex:1, alignItems: 'center' , justifyContent: 'center'}}>
-        <Text>upload Screen</Text>
-        <Button
-          title="Go to Home"
-          onPress={() => this.props.navigation.navigate('Home')}
-        />
-        <Button
-          title="Post server"
-          onPress={this.post_server.bind(this)}
-        />
-        <Button
-          title="Go back"
-          onPress={() => this.props.navigation.goBack()}
-        />
+      <View style={styles.constainer}>
+        <NavBar />
+        <Button title="Upload" onPress={() => this.props.navigation.navigate('Home')} />
+        <UploadImage />
+        <Tap />
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  constainer:{
+    flex:1,
+    alignItems: 'center' ,     
+    // justifyContent: 'center',
+  },
+});

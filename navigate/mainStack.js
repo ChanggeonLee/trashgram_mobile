@@ -4,9 +4,7 @@ import IntroScreen from './introScreen'
 import CityScreen from './cityScreen'
 import LoginScreen from './loginScreen'
 import MypageScreen from './mypageScreen'
-import UploadScreen from './uploadScreen'
 import ImageTest from './imageTest'
-import CameraScreen from './cameraScreen'
 
 
 const MainStack = StackNavigator(
@@ -26,9 +24,6 @@ const MainStack = StackNavigator(
     Mypage: {
       screen: MypageScreen,
     },
-    Upload: {
-      screen: CameraScreen,
-    }
   },
   {
     initialRouteName: 'Home',

@@ -16,8 +16,8 @@ class TapButtonGroup extends React.Component {
             onPress={() => this.props.navigation.navigate('City')}
           />
           <Button 
-            title="Upload" 
-            onPress={() => this.props.navigation.navigate('Upload')}
+            title="Camera" 
+            onPress={() => this.props.navigation.navigate('Camera')}
           />
           <Button 
             title="Mypage" 
