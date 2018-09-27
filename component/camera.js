@@ -21,14 +21,15 @@ class Camera extends Component {
               this.camera = ref;
             }}
             style = {styles.preview}
-            type={RNCamera.Constants.Type.back}
-            flashMode={RNCamera.Constants.FlashMode.on}
-            permissionDialogTitle={'Permission to use camera'}
-            permissionDialogMessage={'We need your permission to use your camera phone'}
+            // type={RNCamera.Constants.Type.back}
+            // flashMode={RNCamera.Constants.FlashMode.on}
+            // permissionDialogTitle={'Permission to use camera'}
+            // permissionDialogMessage={'We need your permission to use your camera phone'}
         />
         <View style={{flex: 0, flexDirection: 'row', justifyContent: 'center',}}>
         <TouchableOpacity
-            onPress={this.takePicture.bind(this)}
+            // onPress={this.takePicture.bind(this)}
+            onPress={this.takePhoto.bind(this)}
             style = {styles.capture}
         >
             <Image style={{height:50 , width:50} } source={require('../src/img/camera.png')} />
@@ -40,13 +41,29 @@ class Camera extends Component {
 
   takePicture = async function() {
     if (this.camera) {
-      const options = { quality: 0.5, base64: false };
-      const data = await this.camera.takePictureAsync(options);
+      // const options = { quality: 0.5, base64: false };
+      // const options = { quality: 0.5 };
+      const data = await this.camera.takePictureAsync();
       this.props.navigation.navigate('Upload', {img:data});
+      // console.log(data);
     }
   };
-}
 
+  takePhoto = async () => {
+    // const { onTakePhoto } = this.props
+    const options = {
+      quality: 0.5,
+      base64: true,
+      width: 300,
+      height: 300,
+    }
+    const data = await this.camera.takePictureAsync(options)
+    this.props.navigation.navigate('Upload', {img:data});
+    // onTakePhoto(data.base64)
+  }
+
+}
+  
 const styles = StyleSheet.create({
   container: {
     flex: 1,

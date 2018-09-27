@@ -11,7 +11,7 @@ export default class UploadScreen extends React.Component {
       <View style={styles.constainer}>
         <NavBar />
         <Button title="Upload" onPress={() => this.props.navigation.navigate('Home')} />
-        <UploadImage />
+        <UploadImage img={this.props.img}/>
         <Tap />
       </View>
     );

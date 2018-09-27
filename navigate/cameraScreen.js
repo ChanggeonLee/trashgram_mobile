@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 
 import Camera from '../component/camera'
+// import Camera from '../component/cameratest'
 import Tap from '../component/tap'
 
 export default class CameraScreen extends Component {
