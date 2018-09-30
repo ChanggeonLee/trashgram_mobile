@@ -6,8 +6,11 @@ import {
   TouchableHighlight,
   Image,
   Text,
+  TextInput,
+  TouchableOpacity,
 } from 'react-native';
 import Camera from 'react-native-camera';
+import { withNavigation } from 'react-navigation'
 
 const styles = StyleSheet.create({
   container: {
@@ -39,6 +42,29 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontWeight: '600',
     fontSize: 17,
+  },
+  img:{
+    height: 300,
+    width: 300,
+    backgroundColor:'red',
+    marginTop:30,
+  },
+  text:{
+    color: 'black',
+    position: 'absolute',
+    right: 200, 
+    bottom: 500,
+    fontSize: 20,
+  },
+  addText:{
+    fontSize: 20, 
+  },
+  textinput:{
+    color: 'black',
+    position: 'absolute',
+    right: 200, 
+    bottom: 400,
+    fontSize: 20,
   }
 });
 
@@ -51,11 +77,29 @@ class CameraRoute extends Component {
     };
   }
 
+  componentWillMount() {
+    this.setState({
+      inputText: '',
+      todos: [],
+    })
+  }
+
+  addTodo() {
+    let todoItem = this.state.inputText
+    let todos = this.state.todos
+    todos.push(todoItem)
+    this.setState({
+      inputText: '',
+      todos: todos,
+    })
+  }
+
   takePicture() {
     this.camera.capture()
       .then((data) => {
         console.log(data);
-        this.setState({ path: data.path })
+        this.setState({ path: data.path });
+        // this.props.navigation.navigate('Upload', {img:data.path});
       })
       .catch(err => console.error(err));
   }
@@ -93,6 +137,32 @@ class CameraRoute extends Component {
           onPress={() => this.setState({ path: null })}
         >Cancel
         </Text>
+        <Text style={styles.text}> #Test Test </Text>
+        
+        <View style={styles.textinput}>
+          {
+            this.state.todos.map((todoItem, index)=> {
+              return (
+                <Text style={styles.addText} key={index}>
+                  {todoItem}
+                </Text>
+              )
+            })
+          }
+          <TextInput
+            style={{height: 40,borderColor: 'gray', borderWidth: 1}}
+            onChangeText={(text) => {
+              this.setState({inputText: text})
+            }}
+            value={this.state.inputText}
+            />
+          <TouchableOpacity onPress={this.addTodo.bind(this)}>
+            <Text>
+              add Todo
+            </Text>
+          </TouchableOpacity>
+        </View>
+
       </View>
     );
   }
@@ -106,4 +176,4 @@ class CameraRoute extends Component {
   }
 };
 
-export default CameraRoute;
+export default withNavigation (CameraRoute);
