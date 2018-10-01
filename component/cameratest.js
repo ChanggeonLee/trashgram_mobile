@@ -12,61 +12,6 @@ import {
 import Camera from 'react-native-camera';
 import { withNavigation } from 'react-navigation'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#000',
-  },
-  preview: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    height: Dimensions.get('window').height,
-    width: Dimensions.get('window').width
-  },
-  capture: {
-    width: 70,
-    height: 70,
-    borderRadius: 35,
-    borderWidth: 5,
-    borderColor: '#FFF',
-    marginBottom: 15,
-  },
-  cancel: {
-    position: 'absolute',
-    right: 20,
-    top: 20,
-    backgroundColor: 'transparent',
-    color: '#FFF',
-    fontWeight: '600',
-    fontSize: 17,
-  },
-  img:{
-    height: 300,
-    width: 300,
-    backgroundColor:'red',
-    marginTop:30,
-  },
-  text:{
-    color: 'black',
-    position: 'absolute',
-    right: 200, 
-    bottom: 500,
-    fontSize: 20,
-  },
-  addText:{
-    fontSize: 20, 
-  },
-  textinput:{
-    color: 'black',
-    position: 'absolute',
-    right: 200, 
-    bottom: 400,
-    fontSize: 20,
-  }
-});
 
 class CameraRoute extends Component {
   constructor(props) {
@@ -137,9 +82,11 @@ class CameraRoute extends Component {
           onPress={() => this.setState({ path: null })}
         >Cancel
         </Text>
+
+
         <Text style={styles.text}> #Test Test </Text>
         
-        <View style={styles.textinput}>
+        {/* <View style={styles.textinput}>
           {
             this.state.todos.map((todoItem, index)=> {
               return (
@@ -161,7 +108,7 @@ class CameraRoute extends Component {
               add Todo
             </Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
 
       </View>
     );
@@ -174,6 +121,63 @@ class CameraRoute extends Component {
       </View>
     );
   }
+
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    // justifyContent: 'center',
+    backgroundColor: '#000',
+  },
+  preview: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    height: Dimensions.get('window').height,
+    width: Dimensions.get('window').width
+  },
+  capture: {
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    borderWidth: 5,
+    borderColor: '#FFF',
+    marginBottom: 15,
+  },
+  cancel: {
+    position: 'absolute',
+    right: 20,
+    top: 20,
+    backgroundColor: 'transparent',
+    color: '#FFF',
+    fontWeight: '600',
+    fontSize: 17,
+  },
+  img:{
+    height: 300,
+    width: 300,
+    backgroundColor:'red',
+    marginTop:30,
+  },
+  text:{
+    color: 'black',
+    position: 'absolute',
+    right: 200, 
+    bottom: 500,
+    fontSize: 20,
+  },
+  addText:{
+    fontSize: 20, 
+  },
+  textinput:{
+    color: 'black',
+    position: 'absolute',
+    right: 200, 
+    bottom: 400,
+    fontSize: 20,
+  }
+});
 
 export default withNavigation (CameraRoute);
