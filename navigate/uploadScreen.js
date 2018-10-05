@@ -6,6 +6,7 @@ import NavBar from '../component/navBar'
 import UploadImage from '../component/uploadImage'
 
 export default class UploadScreen extends React.Component {
+  
   render() {
     return (
       <View style={styles.constainer}>

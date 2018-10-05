@@ -8,10 +8,10 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  Button
 } from 'react-native';
 import Camera from 'react-native-camera';
 import { withNavigation } from 'react-navigation'
-
 
 class CameraRoute extends Component {
   constructor(props) {
@@ -20,6 +20,20 @@ class CameraRoute extends Component {
     this.state = {
       path: null,
     };
+  }
+
+  Postimage(){
+    return fetch('http://localhost:3000/', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        image: this.state.path,
+        // hashtag: []
+      }),
+    }),this.props.navigation.navigate('Home');
   }
 
   componentWillMount() {
@@ -82,34 +96,8 @@ class CameraRoute extends Component {
           onPress={() => this.setState({ path: null })}
         >Cancel
         </Text>
-
-
+        <Button title="Upload" onPress={this.Postimage.bind(this)}/>
         <Text style={styles.text}> #Test Test </Text>
-        
-        {/* <View style={styles.textinput}>
-          {
-            this.state.todos.map((todoItem, index)=> {
-              return (
-                <Text style={styles.addText} key={index}>
-                  {todoItem}
-                </Text>
-              )
-            })
-          }
-          <TextInput
-            style={{height: 40,borderColor: 'gray', borderWidth: 1}}
-            onChangeText={(text) => {
-              this.setState({inputText: text})
-            }}
-            value={this.state.inputText}
-            />
-          <TouchableOpacity onPress={this.addTodo.bind(this)}>
-            <Text>
-              add Todo
-            </Text>
-          </TouchableOpacity>
-        </View> */}
-
       </View>
     );
   }
@@ -128,7 +116,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    // justifyContent: 'center',
     backgroundColor: '#000',
   },
   preview: {
