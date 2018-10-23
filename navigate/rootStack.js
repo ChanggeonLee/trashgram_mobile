@@ -1,17 +1,56 @@
-import { createStackNavigator } from 'react-navigation'
-import MainStack from './mainStack.js'
-import UploadStack from './uploadStack'
+import { createStackNavigator,createSwitchNavigator } from 'react-navigation'
 
-const RootStack = createStackNavigator(
+import HomeScreen from './homeScreen'
+import CameraScreen from './cameraScreen'
+import CityScreen from './cityScreen'
+import UploadScreen from './uploadScreen'
+import MypageScreen from './mypageScreen'
+import LoginScreen from './loginScreen'
+import AuthLoadingScreen from './authLoadingScreen'
+
+// import IntroScreen from './introScreen'
+// import ImageTest from './imageTest'
+
+const AppStack = createStackNavigator(
+{
+  Home: {
+    screen: HomeScreen,
+  },
+  City: {
+    screen: CityScreen,
+  },   
+  Mypage: {
+    screen: MypageScreen,
+  },
+  Camera: {
+    screen: CameraScreen,
+  },
+  Upload:{
+    screen: UploadScreen,
+  },
+},
+{
+  headerMode: 'none',
+}
+);
+
+const AuthStack = createStackNavigator({ 
+  SignIn: LoginScreen 
+},{
+  headerMode: 'none',
+});
+
+const RootStack = createSwitchNavigator(
   {
-    Main: {
-      screen: MainStack,
-    },
-    Up: {
-      screen: UploadStack,
-    }
+    // Intro: {
+    //   screen: IntroScreen,
+    // },
+    AuthLoading: AuthLoadingScreen,
+    App: AppStack,
+    Auth: AuthStack,
   },
   {
+    initialRouteName: 'AuthLoading',
     headerMode: 'none',
   }
 );
