@@ -23,7 +23,7 @@ class CameraRoute extends Component {
   }
 
   Postimage(){
-    return fetch('http://117.17.158.93:3000/', {
+    return fetch('http://117.17.158.93:3000/img', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -31,13 +31,12 @@ class CameraRoute extends Component {
       },
       body: JSON.stringify({
         image: this.state.path,
-        // hashtag: []
       }),
     });
   }
 
   Posthashtag(){
-    return fetch('http://117.17.158.93:3000/', {
+    return fetch('http://117.17.158.93:3000/hashtag', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -72,9 +71,10 @@ class CameraRoute extends Component {
         console.log(data);
         this.setState({ path: data.path });
         // this.props.navigation.navigate('Upload', {img:data.path});
+        this.Postimage(this);
       })
       .catch(err => console.error(err));
-    this.Postimage.bind(this);
+    
   }
 
   renderCamera() {
