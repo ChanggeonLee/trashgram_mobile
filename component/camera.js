@@ -19,19 +19,22 @@ class CameraRoute extends Component {
 
     this.state = {
       path: null,
+      img: null,
     };
   }
 
   Postimage(){
+
+    const formdata = new FormData();
+    formdata.append('name','avatar');
+    formdata.append('photo', {uri:this.state.path , name: 'testphoto', type: 'image/jpg'});
     return fetch('http://117.17.158.93:3000/img', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/form-data',
       },
-      body: JSON.stringify({
-        image: this.state.path,
-      }),
+      body:formdata,
     });
   }
 
@@ -69,12 +72,11 @@ class CameraRoute extends Component {
     this.camera.capture()
       .then((data) => {
         console.log(data);
-        this.setState({ path: data.path });
+        this.setState({ path: data.path , img: data });
         // this.props.navigation.navigate('Upload', {img:data.path});
         this.Postimage(this);
       })
       .catch(err => console.error(err));
-    
   }
 
   renderCamera() {
