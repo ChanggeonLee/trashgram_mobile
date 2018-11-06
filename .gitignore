@@ -57,3 +57,5 @@ buck-out/
 
 # src
 src/
+
+ios/FacebookSDKs-iOS-4.38.0/
