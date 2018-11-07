@@ -1,27 +1,52 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native'
+import { LoginButton, AccessToken } from 'react-native-fbsdk';
+import { withNavigation } from 'react-navigation'
 
-var FBLoginButton = require('../component/fbloginbutton');
+class LoginScreen extends React.Component {
+  constructor(props) {
+    super(props);
 
-export default class HomeScreen extends React.Component {
+    this.state = {
+      token: null,
+    };
+  }
+  givetoke(){
+    return fetch('http://117.17.158.93:3000/auth', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        token:this.state.token
+      }),
+    }),this.props.navigation.navigate('Home');
+  }
+
   render() {
     return (
-      // <View style={{flex:1, alignItems: 'center' , justifyContent: 'center'}}>
-      //   <Text>login Screen</Text>
-      //   {/* <Button
-      //     title="Go to Home"
-      //     onPress={() => this.props.navigation.navigate('Home')}
-      //   />
-      //   <Button
-      //     title="Go back"
-      //     onPress={() => this.props.navigation.goBack()}
-      //   /> */}
-      //   <Text style={styles.label}>Welcome to the Facebook SDK for React Native!</Text>
-      //   <FBLoginButton />
-      // </View>
       <View style={styles.container}>
-       <Text style={styles.label}>Welcome to the Facebook SDK for React Native!</Text>
-       <FBLoginButton />
+        <Text style={styles.label}>Welcome to the Facebook SDK for React Native!</Text>
+        <LoginButton 
+          onLoginFinished={
+            (error, result) => {
+              if (error) {
+                console.log("login has error: " + result.error);
+              } else if (result.isCancelled) {
+                console.log("login is cancelled.");
+              } else {
+                AccessToken.getCurrentAccessToken().then(
+                  (data) => {
+                    console.log(data.accessToken.toString())
+                    this.setState({ token: data.accessToken});
+                    this.givetoke();
+                  }
+                )
+              }
+            }
+          }
+        />
       </View>
     );
   }
@@ -41,3 +66,5 @@ const styles = StyleSheet.create({
     marginBottom: 48,
   },
 });
+
+export default withNavigation (LoginScreen);
