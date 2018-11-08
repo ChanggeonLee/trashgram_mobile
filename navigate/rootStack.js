@@ -11,7 +11,7 @@ import AuthLoadingScreen from './authLoadingScreen'
 // import IntroScreen from './introScreen'
 // import ImageTest from './imageTest'
 
-const RootStack = createStackNavigator(
+const AppStack = createStackNavigator(
 {
   Home: {
     screen: HomeScreen,
@@ -30,30 +30,30 @@ const RootStack = createStackNavigator(
   },
 },
 {
-  initialRouteName: 'Home',
+  // initialRouteName: 'Home',
   headerMode: 'none',
 }
 );
 
-// const AuthStack = createStackNavigator({ 
-//   SignIn: LoginScreen 
-// },{
-//   headerMode: 'none',
-// });
+const AuthStack = createStackNavigator({ 
+  SignIn: LoginScreen 
+},{
+  headerMode: 'none',
+});
 
-// const RootStack = createSwitchNavigator(
-//   {
-//     // Intro: {
-//     //   screen: IntroScreen,
-//     // },
-//     // AuthLoading: AuthLoadingScreen,
-//     App: AppStack,
-//     // Auth: AuthStack,
-//   },
-//   {
-//     initialRouteName: 'AuthLoading',
-//     headerMode: 'none',
-//   }
-// );
+const RootStack = createSwitchNavigator(
+  {
+    // Intro: {
+    //   screen: IntroScreen,
+    // },
+    AuthLoading: AuthLoadingScreen,
+    App: AppStack,
+    Auth: AuthStack,
+  },
+  {
+    initialRouteName: 'AuthLoading',
+    headerMode: 'none',
+  }
+);
 
 export default RootStack
