@@ -8,14 +8,10 @@ import ProFileImage from '../component/profileImage'
 class ProFile extends React.Component {
 
   _cleartoken = async () => {
-    // // console.log("clear item");
-    // token = await AsyncStorage.getItem('userToken')
-    // console.log(token);
     try {
       await AsyncStorage.clear();
-      // console.log("clear item");
-      token = await AsyncStorage.getItem('userToken')
-      console.log(token);
+      token = await AsyncStorage.getItem('userToken');
+      this.props.navigation.navigate('AuthLoading');
     } catch (error) {
       // Error saving data
     }
