@@ -9,11 +9,9 @@ class LoginScreen extends React.Component {
 
     this.state = {
       token: null,
-      user_email: null,
-      user_name: null,
-      user_id: null,
     };
   }
+
   givetoke(){
     return fetch('http://117.17.158.93:3000/auth', {
       method: 'POST',
@@ -23,32 +21,12 @@ class LoginScreen extends React.Component {
       },
       body: JSON.stringify({
         token:this.state.token,
-        user_email:this.state.user_email,
-        user_name: this.state.user_name,
-        user_id: this.state.user_id
       }),
-    }),this.props.navigation.navigate('Home');
-  }
-
-  initUser(token) {
-    fetch('https://graph.facebook.com/v2.5/me?fields=email,name,friends&access_token=' + token)
-    .then((response) => response.json())
-    .then((json) => {
-      // this.setState({ 
-      //   user_email: json.email,
-      //   // user_name: json.name,
-      //   // user_id: json.id
-      // });
-      // console.log("state : " + this.state.user_email);
-    })
-    .catch(() => {
-      reject('ERROR GETTING DATA FROM FACEBOOK')
-    })
+    }),this.props.navigation.navigate('AuthLoading');
   }
 
   _settoken = async () => {
     await AsyncStorage.setItem( 'userToken', this.state.token);
-  
   }
 
   render() {
@@ -56,26 +34,16 @@ class LoginScreen extends React.Component {
       <View style={styles.container}>
         <Text style={styles.label}>Welcome to the Facebook SDK for React Native!</Text>
         <LoginButton 
+          readPermissions={["public_profile","email"]}
           onLoginFinished={
-            (error, result) => {
-              if (error) {
-                console.log("login has error: " + result.error);
-              } else if (result.isCancelled) {
-                console.log("login is cancelled.");
-              } else {
-                AccessToken.getCurrentAccessToken().then(
-                  (data) => {
-                    const { accessToken } = data
-                    this.initUser(accessToken);                  
-                    this.setState({ token: data.accessToken});
-                    this._settoken()
-                    this.givetoke();
-                  }
-                )
-              }
-            }
-          }
-        />
+            () => {             
+              AccessToken.getCurrentAccessToken().then(
+                (data) => {
+                  this.setState({ token: data.accessToken});
+                  this._settoken();                                        
+                  this.givetoke();
+                }
+            )}}/>
       </View>
     );
   }
