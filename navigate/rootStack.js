@@ -8,9 +8,6 @@ import MypageScreen from './mypageScreen'
 import LoginScreen from './loginScreen'
 import AuthLoadingScreen from './authLoadingScreen'
 
-// import IntroScreen from './introScreen'
-// import ImageTest from './imageTest'
-
 const AppStack = createStackNavigator(
 {
   Home: {
@@ -30,7 +27,6 @@ const AppStack = createStackNavigator(
   },
 },
 {
-  // initialRouteName: 'Home',
   headerMode: 'none',
 }
 );
@@ -43,9 +39,6 @@ const AuthStack = createStackNavigator({
 
 const RootStack = createSwitchNavigator(
   {
-    // Intro: {
-    //   screen: IntroScreen,
-    // },
     AuthLoading: AuthLoadingScreen,
     App: AppStack,
     Auth: AuthStack,

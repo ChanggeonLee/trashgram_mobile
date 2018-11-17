@@ -10,40 +10,36 @@ import {
 import Image from './image'
 
 export default class Lattice extends React.Component{
-  // state = {info: []}
-
-  // async componentDidMount() {
-    
-  //   const response = await fetch('http://localhost:3000/')
-  //   const info  = await response.json()
-  //   this.setState({info: info})
-  // }
-
-
   render(){
+    // data를 가져와서 for문으로 list를 만들자
+    // var imagelist = [];
+
+    // for(let image fo imagedata){
+    //   imagelist.puth(
+    //     <View>
+
+    //     </View>
+    //   );
+    // }
+
     return (       
       <ScrollView style={styles.container}>
         <View style={styles.imgRow}>
           <Image />
           <Image />
-        </View>
-        <View style={styles.imgRow}>
+        {/* </View> */}
+        {/* <View style={styles.imgRow}> */}
+          <Image />
+          <Image />
+        {/* </View> */}
+        {/* <View style={styles.imgRow}> */}
+          <Image />
+          <Image />
+        {/* </View> */}
+        {/* <View style={styles.imgRow}> */}
           <Image />
           <Image />
         </View>
-        <View style={styles.imgRow}>
-          <Image />
-          <Image />
-        </View>
-        <View style={styles.imgRow}>
-          <Image />
-          <Image />
-        </View>
-        {/* <View>
-          {
-            this.state.info.map( info => {return <Text key={info.data}>{info.data}</Text>} )
-          }
-        </View>          */}
       </ScrollView>
     );
   }
