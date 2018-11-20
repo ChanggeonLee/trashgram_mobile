@@ -9,11 +9,15 @@ class LoginScreen extends React.Component {
 
     this.state = {
       token: null,
+      email: null,
+      name: null,
+      id: null,
+      picture: null,
     };
   }
 
-  givetoke(){
-    return fetch('http://117.17.158.93:3000/auth', {
+  async givetoke(){
+    let response = await fetch('http://117.17.158.93:3000/auth', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -21,8 +25,15 @@ class LoginScreen extends React.Component {
       },
       body: JSON.stringify({
         token:this.state.token,
+        email:this.state.email,
+        name:this.state.name,
+        id:this.state.id,
+        picture:this.state.picture,
       }),
-    }),this.props.navigation.navigate('AuthLoading');
+    });
+    let responseJson = await response.json();
+    console.log(responseJson);
+    this.props.navigation.navigate('AuthLoading');
   }
 
   _settoken = async () => {
@@ -38,9 +49,17 @@ class LoginScreen extends React.Component {
           onLoginFinished={
             () => {             
               AccessToken.getCurrentAccessToken().then(
-                (data) => {
+                async (data) => {
                   this.setState({ token: data.accessToken});
-                  this._settoken();                                        
+                  this._settoken();
+                  let response = await fetch('https://graph.facebook.com/v2.5/me?fields=email,name,picture&access_token='+this.state.token);
+                  let responseJson = await response.json();                  
+                  this.setState({
+                    email: responseJson.email,
+                    name: responseJson.name,
+                    id: responseJson.id,
+                    picture: responseJson.picture.data.url,
+                  });
                   this.givetoke();
                 }
             )}}/>
