@@ -12,20 +12,18 @@ import Image from './image'
 export default class Lattice extends React.Component{
   render(){
     // data를 가져와서 for문으로 list를 만들자
-    // var imagelist = [];
+    var imagelist = [];
 
-    // for(let image fo imagedata){
-    //   imagelist.puth(
-    //     <View>
-
-    //     </View>
-    //   );
-    // }
+    for(let i = 0 ; i < 5 ; i++){
+      imagelist.push(
+        <Image />
+      );
+    }
 
     return (       
       <ScrollView style={styles.container}>
-        <View style={styles.imgRow}>
-          <Image />
+        {/* <View style={styles.imgRow}> */}
+          
           <Image />
         {/* </View> */}
         {/* <View style={styles.imgRow}> */}
@@ -39,7 +37,7 @@ export default class Lattice extends React.Component{
         {/* <View style={styles.imgRow}> */}
           <Image />
           <Image />
-        </View>
+        {/* </View> */}
       </ScrollView>
     );
   }

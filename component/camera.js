@@ -11,7 +11,8 @@ import {
   Button
 } from 'react-native';
 import Camera from 'react-native-camera';
-import { withNavigation } from 'react-navigation'
+import { withNavigation } from 'react-navigation';
+import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 
 class CameraRoute extends Component {
   constructor(props) {
@@ -107,11 +108,15 @@ class CameraRoute extends Component {
           source={{ uri: this.state.path }}
           style={styles.uploadpreview}
         />
+        
         <Text
           style={styles.cancel}
           onPress={() => this.setState({ path: null })}
-        >Cancel
+        >Cance
         </Text>
+        <FormLabel>HashTag</FormLabel>
+        {/* <FormInput onChangeText={someFunction}/> */}
+        <FormInput/>
         <View style={styles.upload}>
           <Button title="Upload" onPress={this.Posthashtag.bind(this)} style={styles.uploadtext}/>
         </View>
