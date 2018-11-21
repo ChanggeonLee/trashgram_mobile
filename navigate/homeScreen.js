@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text} from 'react-native';
 import { Header } from 'react-native-elements';
-
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import ImageList from '../component/imageList';
 
 
