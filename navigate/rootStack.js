@@ -8,6 +8,8 @@ import MypageScreen from './mypageScreen'
 import LoginScreen from './loginScreen'
 import AuthLoadingScreen from './authLoadingScreen'
 
+import TabScreen from './tabScreen'
+
 const AppStack = createStackNavigator(
 {
   Home: {
@@ -40,7 +42,8 @@ const AuthStack = createStackNavigator({
 const RootStack = createSwitchNavigator(
   {
     AuthLoading: AuthLoadingScreen,
-    App: AppStack,
+    // App: AppStack,
+    App: TabScreen,
     Auth: AuthStack,
   },
   {

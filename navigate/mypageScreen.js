@@ -14,7 +14,7 @@ export default class HomeScreen extends React.Component {
         <NavBar />
         <ProFile />
         <ImageList />
-        <Tap />
+        {/* <Tap /> */}
       </View>
     );
   }

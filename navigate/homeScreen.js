@@ -12,7 +12,7 @@ export default class HomeScreen extends React.Component {
       <View style={ styles.container}>  
         <NavBar />      
         <ImageList />
-        <Tap />
+        {/* <Tap /> */}
       </View>
     );
   }
