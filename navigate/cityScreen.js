@@ -13,7 +13,7 @@ export default class HomeScreen extends React.Component {
         <NavBar />
         <Graph />  
         <Graph2 />
-        <Tap />
+        {/* <Tap /> */}
       </View>
     );
   }

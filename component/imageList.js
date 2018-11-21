@@ -14,7 +14,7 @@ export default class Lattice extends React.Component{
 
     for(let i = 0 ; i < 5 ; i++){
       imagelist.push(
-        <Image />
+        <Image key={i}/>
       );
     }
     return imagelist;

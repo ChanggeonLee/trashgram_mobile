@@ -13,6 +13,7 @@ import {Dimensions} from 'react-native'
 
 import HomeScreen from './homeScreen'
 import ProfileScreen from './mypageScreen'
+import RankScreen from './cityScreen'
 
 const deviceW = Dimensions.get('window').width
 
@@ -21,30 +22,6 @@ const basePx = 375
 function px2dp(px) {
   return px *  deviceW / basePx
 }
-
-// class Home extends Component {
-//   render() {
-//     return (
-//       <View style={styles.container}>
-//         <Text style={styles.welcome}>
-//           Home
-//         </Text>
-//       </View>
-//     )
-//   }
-// }
-
-// class Profile extends Component {
-//   render() {
-//     return (
-//       <View style={styles.container}>
-//         <Text style={styles.welcome}>
-//           Profile
-//         </Text>
-//       </View>
-//     )
-//   }
-// }
 
 export default class TabDemo extends Component {
   state= {
@@ -60,9 +37,18 @@ export default class TabDemo extends Component {
           selectedTitleStyle={{color: "#3496f0"}}
           renderIcon={() => <Icon name="home" size={px2dp(22)} color="#666"/>}
           renderSelectedIcon={() => <Icon name="home" size={px2dp(22)} color="#3496f0"/>}
-          badgeText="1"
+          // badgeText="1"
           onPress={() => this.setState({selectedTab: 'home'})}>
           <HomeScreen />
+        </TabNavigator.Item>
+        <TabNavigator.Item
+          selected={this.state.selectedTab === 'rank'}
+          title="Rank"
+          selectedTitleStyle={{color: "#3496f0"}}
+          renderIcon={() => <Icon name="user" size={px2dp(22)} color="#666"/>}
+          renderSelectedIcon={() => <Icon name="user" size={px2dp(22)} color="#3496f0"/>}
+          onPress={() => this.setState({selectedTab: 'rank'})}>
+          <RankScreen />
         </TabNavigator.Item>
         <TabNavigator.Item
           selected={this.state.selectedTab === 'profile'}
