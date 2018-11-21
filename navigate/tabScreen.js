@@ -14,6 +14,7 @@ import {Dimensions} from 'react-native'
 import HomeScreen from './homeScreen'
 import ProfileScreen from './mypageScreen'
 import RankScreen from './cityScreen'
+import CameraScreen from './cameraScreen'
 
 const deviceW = Dimensions.get('window').width
 
@@ -49,6 +50,15 @@ export default class TabDemo extends Component {
           renderSelectedIcon={() => <Icon name="bar-chart-o" size={px2dp(22)} color="#3496f0"/>}
           onPress={() => this.setState({selectedTab: 'rank'})}>
           <RankScreen />
+        </TabNavigator.Item>
+        <TabNavigator.Item
+          selected={this.state.selectedTab === 'upload'}
+          title="Upload"
+          selectedTitleStyle={{color: "#3496f0"}}
+          renderIcon={() => <Icon name="plus-square" size={px2dp(22)} color="#666"/>}
+          renderSelectedIcon={() => <Icon name="plus-square" size={px2dp(22)} color="#3496f0"/>}
+          onPress={() => this.setState({selectedTab: 'upload'})}>
+          <CameraScreen />
         </TabNavigator.Item>
         <TabNavigator.Item
           selected={this.state.selectedTab === 'profile'}
