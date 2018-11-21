@@ -1,8 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native'
+import { Header } from 'react-native-elements'
 
-import Tap from '../component/tap'
-import NavBar from '../component/navBar'
 import ProFile from '../component/proFile'
 import ImageList from '../component/imageList'
 
@@ -10,8 +9,11 @@ import ImageList from '../component/imageList'
 export default class HomeScreen extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <NavBar />
+      <View style={styles.container}>      
+        <Header
+          centerComponent={{ text: 'TrashGram', style: { color: 'black' } }}
+          backgroundColor="#FFFFFF"            
+        />
         <ProFile />
         <ImageList />
         {/* <Tap /> */}

@@ -45,8 +45,8 @@ export default class TabDemo extends Component {
           selected={this.state.selectedTab === 'rank'}
           title="Rank"
           selectedTitleStyle={{color: "#3496f0"}}
-          renderIcon={() => <Icon name="user" size={px2dp(22)} color="#666"/>}
-          renderSelectedIcon={() => <Icon name="user" size={px2dp(22)} color="#3496f0"/>}
+          renderIcon={() => <Icon name="bar-chart-o" size={px2dp(22)} color="#666"/>}
+          renderSelectedIcon={() => <Icon name="bar-chart-o" size={px2dp(22)} color="#3496f0"/>}
           onPress={() => this.setState({selectedTab: 'rank'})}>
           <RankScreen />
         </TabNavigator.Item>

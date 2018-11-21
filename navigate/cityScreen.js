@@ -1,16 +1,18 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native'
+import { Header } from 'react-native-elements'
 
 import Graph from '../component/graph_1'
 import Graph2 from '../component/graph_2'
-import Tap   from '../component/tap'
-import NavBar from  '../component/navBar'
 
 export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={ styles.container}>
-        <NavBar />
+        <Header
+          centerComponent={{ text: 'TrashGram', style: { color: 'black' } }}
+          backgroundColor="#FFFFFF"            
+        />
         <Graph />  
         <Graph2 />
         {/* <Tap /> */}
