@@ -19,14 +19,17 @@ class CameraRoute extends Component {
       path: null,
       img: null,
       hashtag: null,
+      tag :null,
     };
   }
 
-  Postimage(){
+  async Postimage(){
     const formdata = new FormData();
     formdata.append('name','avatar');
     formdata.append('photo', {uri:this.state.path , name: 'testphoto', type: 'image/jpg'});
-    return fetch('http://117.17.158.93:3000/img', {
+    // return 
+    
+    let reponse = await fetch('http://117.17.158.93:3000/img', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -34,11 +37,21 @@ class CameraRoute extends Component {
       },
       body:formdata,
     });
+
+    let responseJson = await reponse.json();
+    console.log(responseJson);
+    this.setState({
+      path : responseJson.path,
+      tag : responseJson.tag
+    });
+
+    console.log(this.state);
+    // return responseJson;
   }
 
-  Posthashtag(){
+  async Posthashtag(){
     console.log(this.state);
-    return fetch('http://117.17.158.93:3000/hashtag', {
+    let reponse = await fetch('http://117.17.158.93:3000/hashtag', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -47,7 +60,9 @@ class CameraRoute extends Component {
       body: JSON.stringify({
         hashtag: this.state.hashtag
       }),
-    }),this.props.navigation.navigate('AuthLoading');
+    })
+    // let responseJson = await response.json();
+    this.props.navigation.navigate('AuthLoading');
   }
 
   componentWillMount() {
