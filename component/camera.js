@@ -16,6 +16,7 @@ class CameraRoute extends Component {
     super(props);
 
     this.state = {
+      token: null,
       path: null,
       img: null,
       hashtag: null,
@@ -51,17 +52,21 @@ class CameraRoute extends Component {
 
   async Posthashtag(){
     console.log(this.state);
-    let reponse = await fetch('http://117.17.158.93:3000/hashtag', {
+    const usertoken = await AsyncStorage.getItem('userToken');
+    // this.setState({token: userToken});
+    await fetch('http://117.17.158.93:3000/hashtag', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        hashtag: this.state.hashtag
+        token : token,
+        hashtag : this.state.hashtag,
+        tag : this.state.tag,
+        path : this.state.path,
       }),
-    })
-    // let responseJson = await response.json();
+    })    
     this.props.navigation.navigate('AuthLoading');
   }
 

@@ -50,8 +50,7 @@ class LoginScreen extends React.Component {
             () => {             
               AccessToken.getCurrentAccessToken().then(
                 async (data) => {
-                  this.setState({ token: data.accessToken});
-                  this._settoken();
+                  this.setState({ token: data.accessToken});                  
                   let response = await fetch('https://graph.facebook.com/v2.5/me?fields=email,name,picture&access_token='+this.state.token);
                   let responseJson = await response.json();                  
                   this.setState({
@@ -60,7 +59,8 @@ class LoginScreen extends React.Component {
                     id: responseJson.id,
                     picture: responseJson.picture.data.url,
                   });
-                  this.givetoke();
+                  this._settoken();
+                  this.givetoke();                  
                 }
             )}}/>
       </View>
