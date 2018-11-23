@@ -5,31 +5,33 @@ import {
   Dimensions,
   TouchableHighlight,
   Image,
-  Text,
   TextInput,
-  TouchableOpacity,
-  Button
+  AsyncStorage,
 } from 'react-native';
 import Camera from 'react-native-camera';
-import { withNavigation } from 'react-navigation';
-import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
+import { withNavigation} from 'react-navigation';
+import { Header} from 'react-native-elements';
 
 class CameraRoute extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      token: null,
       path: null,
       img: null,
+      hashtag: null,
+      tag :null,
     };
   }
 
-  Postimage(){
-
+  async Postimage(){
     const formdata = new FormData();
     formdata.append('name','avatar');
     formdata.append('photo', {uri:this.state.path , name: 'testphoto', type: 'image/jpg'});
-    return fetch('http://117.17.158.93:3000/img', {
+    // return 
+    
+    let reponse = await fetch('http://117.17.158.93:3000/img', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -37,19 +39,40 @@ class CameraRoute extends Component {
       },
       body:formdata,
     });
+
+    let responseJson = await reponse.json();
+    console.log(responseJson);
+    this.setState({
+      path : responseJson.path,
+      tag : responseJson.tag
+    });
+
+    console.log(this.state);
+    // return responseJson;
   }
 
-  Posthashtag(){
-    return fetch('http://117.17.158.93:3000/hashtag', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        hashtag: ["#test" , "#test2"]
-      }),
-    }),this.props.navigation.navigate('Home');
+  async Posthashtag(){
+    // console.log(this.state);
+    const usertoken = await AsyncStorage.getItem('userToken');
+    // this.setState({token: userToken});
+    if(usertoken){
+      console.log(usertoken);
+      await fetch('http://117.17.158.93:3000/hashtag', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token : usertoken,
+          hashtag : this.state.hashtag,
+          tag : this.state.tag,
+          path : this.state.path,
+        }),
+      });
+        
+    this.props.navigation.navigate('AuthLoading');
+    }
   }
 
   componentWillMount() {
@@ -74,7 +97,6 @@ class CameraRoute extends Component {
       .then((data) => {
         console.log(data);
         this.setState({ path: data.path , img: data });
-        // this.props.navigation.navigate('Upload', {img:data.path});
         this.Postimage(this);
       })
       .catch(err => console.error(err));
@@ -103,23 +125,22 @@ class CameraRoute extends Component {
 
   renderImage() {
     return (
-      <View style={ {flex:1, backgroundColor:'white'} }>
+      <View style={ {flex:1, backgroundColor:'white'} }>        
+        <Header
+          leftComponent={{ icon: 'save', color: '#000' ,onPress:this.Posthashtag.bind(this)}}
+          centerComponent={{ text: 'TrashGram', style: { color: 'black' } }}                    
+          rightComponent={{ icon: 'cancel', color: '#000', onPress:() => this.setState({ path: null}) }}
+          backgroundColor="#FFFFFF"            
+        />
         <Image
           source={{ uri: this.state.path }}
           style={styles.uploadpreview}
         />
-        
-        <Text
-          style={styles.cancel}
-          onPress={() => this.setState({ path: null })}
-        >Cance
-        </Text>
-        <FormLabel>HashTag</FormLabel>
-        {/* <FormInput onChangeText={someFunction}/> */}
-        <FormInput/>
-        <View style={styles.upload}>
-          <Button title="Upload" onPress={this.Posthashtag.bind(this)} style={styles.uploadtext}/>
-        </View>
+        <TextInput
+          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+          onChangeText={(text) => this.setState({hashtag:text})}
+          value={this.state.text}
+        />
       </View>
     );
   }

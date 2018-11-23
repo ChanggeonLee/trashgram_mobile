@@ -7,25 +7,43 @@ import {
 import Image from './image'
 
 export default class Lattice extends React.Component{
+  constructor(props) {
+    super(props);
 
-  getimagelist(){
+    this.state = {
+      list:null,
+    };
+  }
+  componentDidMount() {
+    this.getimagelist();
+  }
+
+  getimagelist = async () => {
     // data를 가져와서 for문으로 list를 만들자
-    var imagelist = [];
+    let response = await fetch('http://117.17.158.93:3000/imglist');
+    
+    responseJson = await response.json()    
+    console.log(responseJson);
 
-    for(let i = 0 ; i < 5 ; i++){
+    var imagelist = [];
+    var i = 0 
+    for(info of responseJson){
       imagelist.push(
-        <Image key={i}/>
-      );
+        <Image key={i} path={info.path} tag={info.recycle} hashtag={info.hashtag} />
+      );     
+      i++; 
     }
+
+    this.setState({list:imagelist});
+
     return imagelist;
   }
 
-
-  render(){
-    
-    return (       
-      <ScrollView style={styles.container}> 
-        {this.getimagelist()}
+  render(){  
+    // this.getimagelist();    
+    return (           
+      <ScrollView style={styles.container} > 
+        {this.state.list}
       </ScrollView>
     );
   }
