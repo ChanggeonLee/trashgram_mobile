@@ -6,6 +6,7 @@ import {
   TouchableHighlight,
   Image,
   TextInput,
+  AsyncStorage,
 } from 'react-native';
 import Camera from 'react-native-camera';
 import { withNavigation} from 'react-navigation';
@@ -51,23 +52,27 @@ class CameraRoute extends Component {
   }
 
   async Posthashtag(){
-    console.log(this.state);
+    // console.log(this.state);
     const usertoken = await AsyncStorage.getItem('userToken');
     // this.setState({token: userToken});
-    await fetch('http://117.17.158.93:3000/hashtag', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        token : token,
-        hashtag : this.state.hashtag,
-        tag : this.state.tag,
-        path : this.state.path,
-      }),
-    })    
+    if(usertoken){
+      console.log(usertoken);
+      await fetch('http://117.17.158.93:3000/hashtag', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token : usertoken,
+          hashtag : this.state.hashtag,
+          tag : this.state.tag,
+          path : this.state.path,
+        }),
+      });
+        
     this.props.navigation.navigate('AuthLoading');
+    }
   }
 
   componentWillMount() {
