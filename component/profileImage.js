@@ -6,7 +6,7 @@ export default class profileimage extends React.Component{
     return (
       <Image
           style={styles.container}
-          source={require('../src/img/testImg.png')}
+          source={{uri:this.props.img}}
       />
     );
   }

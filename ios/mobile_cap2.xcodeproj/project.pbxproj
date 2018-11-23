@@ -913,7 +913,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = L55Z5QDR56;
+						DevelopmentTeam = PNC2JZ3K65;
 						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
@@ -1548,7 +1548,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = L55Z5QDR56;
+				DEVELOPMENT_TEAM = PNC2JZ3K65;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/FacebookSDKs-iOS-4.38.0",
 					"/Users/joujun/OneDrive/project/capstone2/mobile_cap2/ios/FacebookSDKs-iOS-4.38.0",
@@ -1587,7 +1587,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L55Z5QDR56;
+				DEVELOPMENT_TEAM = PNC2JZ3K65;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/FacebookSDKs-iOS-4.38.0",
 					"/Users/joujun/OneDrive/project/capstone2/mobile_cap2/ios/FacebookSDKs-iOS-4.38.0",

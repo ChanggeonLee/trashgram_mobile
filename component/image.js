@@ -16,7 +16,6 @@ export default class Lattice extends React.Component{
       <Card
         title='사용자 이름'
         image={{uri: 'http://117.17.158.93:3000/'+ this.props.path}}>
-        {/* image={require('../src/img/testImg.png')}>         */}
         <Text style={{marginBottom: 10}}>
           {this.props.tag}    {this.props.hashtag}
         </Text>        

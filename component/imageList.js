@@ -39,8 +39,7 @@ export default class Lattice extends React.Component{
     return imagelist;
   }
 
-  render(){  
-    // this.getimagelist();    
+  render(){    
     return (           
       <ScrollView style={styles.container} > 
         {this.state.list}
