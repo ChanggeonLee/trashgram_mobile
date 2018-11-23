@@ -26,10 +26,12 @@ export default class Lattice extends React.Component{
     console.log(responseJson);
 
     var imagelist = [];
-    for(let i = 0 ; i < 5 ; i++){
+    var i = 0 
+    for(info of responseJson){
       imagelist.push(
-        <Image key={i}/>
-      );      
+        <Image key={i} path={info.path} tag={info.recycle} hashtag={info.hashtag} />
+      );     
+      i++; 
     }
 
     this.setState({list:imagelist});
