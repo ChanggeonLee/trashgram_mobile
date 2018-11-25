@@ -53,10 +53,10 @@ class CameraRoute extends Component {
 
   async Posthashtag(){
     // console.log(this.state);
-    const usertoken = await AsyncStorage.getItem('userToken');
+    const userId = await AsyncStorage.getItem('userId');
     // this.setState({token: userToken});
-    if(usertoken){
-      console.log(usertoken);
+    if(userId){
+      console.log(userId);
       await fetch('http://117.17.158.93:3000/hashtag', {
         method: 'POST',
         headers: {
@@ -64,7 +64,7 @@ class CameraRoute extends Component {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          token : usertoken,
+          id : userId,
           hashtag : this.state.hashtag,
           tag : this.state.tag,
           path : this.state.path,

@@ -15,8 +15,7 @@ export default class HomeScreen extends React.Component {
           backgroundColor="#FFFFFF"            
         />
         <ProFile />
-        <ImageList />
-        {/* <Tap /> */}
+        <ImageList />        
       </View>
     );
   }

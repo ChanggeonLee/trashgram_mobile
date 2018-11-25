@@ -21,33 +21,33 @@ class ProFile extends React.Component {
   }
 
   profileInfo = async() => {
-    let userToken = await AsyncStorage.getItem('userToken');
-    console.log(userToken);
-    if( userToken ){
-      let response = await fetch('http://117.17.158.93:3000/auth/info', {
+    let userId = await AsyncStorage.getItem('userId');
+    console.log(userId);    
+    let response = await fetch('http://117.17.158.93:3000/auth/info', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        token:userToken
+        id:userId
       }),
     });
     let responseJson = await response.json();
     console.log(responseJson);
-    // this.setState({
-    //   name:responseJson.name,
-    //   picture: responseJson.picture,
-    //   score: responseJson.score,
-    // });
-    }
+    
+    this.setState({
+      name:responseJson.name,
+      picture: responseJson.picture,
+      score: responseJson.score,
+    });
+    
   }
 
   _cleartoken = async () => {
     try {
       await AsyncStorage.clear();
-      token = await AsyncStorage.getItem('userToken');
+      userId = await AsyncStorage.getItem('userId');
       this.props.navigation.navigate('AuthLoading');
     } catch (error) {
       // Error saving data
