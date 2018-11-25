@@ -139,7 +139,7 @@ class CameraRoute extends Component {
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
           onChangeText={(text) => this.setState({hashtag:text})}
-          value={this.state.text}
+          score={this.state.text}
         />
       </View>
     );

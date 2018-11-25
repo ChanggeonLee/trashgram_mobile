@@ -40,7 +40,7 @@ export default class UploadImage extends React.Component {
             onChangeText={(text) => {
               this.setState({inputText: text})
             }}
-            value={this.state.inputText}
+            score={this.state.inputText}
             />
           <TouchableOpacity onPress={this.addTodo.bind(this)}>
             <Text>
