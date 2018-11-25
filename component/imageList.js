@@ -29,7 +29,7 @@ export default class Lattice extends React.Component{
     var i = 0 
     for(info of responseJson){
       imagelist.push(
-        <Image key={i} path={info.path} tag={info.recycle} hashtag={info.hashtag} />
+        <Image key={i} path={info.img} tag={info.recycle} hashtag={info.hashtag} />
       );     
       i++; 
     }
@@ -39,8 +39,7 @@ export default class Lattice extends React.Component{
     return imagelist;
   }
 
-  render(){  
-    // this.getimagelist();    
+  render(){    
     return (           
       <ScrollView style={styles.container} > 
         {this.state.list}

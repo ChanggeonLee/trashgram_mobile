@@ -36,8 +36,8 @@ class LoginScreen extends React.Component {
     this.props.navigation.navigate('AuthLoading');
   }
 
-  _settoken = async () => {
-    await AsyncStorage.setItem( 'userToken', this.state.token);
+  _setuserid = async () => {
+    await AsyncStorage.setItem( 'userId', this.state.id);
   }
 
   render() {
@@ -59,7 +59,7 @@ class LoginScreen extends React.Component {
                     id: responseJson.id,
                     picture: responseJson.picture.data.url,
                   });
-                  this._settoken();
+                  this._setuserid();
                   this.givetoke();                  
                 }
             )}}/>
