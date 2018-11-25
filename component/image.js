@@ -14,7 +14,7 @@ export default class Lattice extends React.Component{
     console.log('http://117.17.158.93:3000/'+ this.props.path);
     return (
       <Card
-        title='사용자 이름'
+        title={this.props.name}
         image={{uri: 'http://117.17.158.93:3000/'+ this.props.path}}>
         <Text style={{marginBottom: 10}}>
           {this.props.tag}    {this.props.hashtag}

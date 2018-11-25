@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native'
 import { Header } from 'react-native-elements'
 
 import ProFile from '../component/proFile'
-import ImageList from '../component/imageList'
+import ImageList from '../component/myimageList'
 
 
 export default class HomeScreen extends React.Component {

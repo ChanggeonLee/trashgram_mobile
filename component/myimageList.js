@@ -2,6 +2,7 @@ import React from 'react'
 import {
   StyleSheet,
   ScrollView,
+  AsyncStorage
 } from 'react-native'
 
 import Image from './image'
@@ -20,8 +21,19 @@ export default class Lattice extends React.Component{
 
   getimagelist = async () => {
     // data를 가져와서 for문으로 list를 만들자
-    let response = await fetch('http://117.17.158.93:3000/imglist');
-    
+    let userId = await AsyncStorage.getItem('userId');
+
+    let response = await fetch('http://117.17.158.93:3000/myimglist', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id:userId
+      }),
+    });
+
     responseJson = await response.json()    
     console.log(responseJson);
 
@@ -35,8 +47,6 @@ export default class Lattice extends React.Component{
     }
 
     this.setState({list:imagelist});
-
-    return imagelist;
   }
 
   render(){    

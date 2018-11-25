@@ -17,7 +17,6 @@ class CameraRoute extends Component {
     super(props);
 
     this.state = {
-      token: null,
       path: null,
       img: null,
       hashtag: null,
