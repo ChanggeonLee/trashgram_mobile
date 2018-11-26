@@ -13,111 +13,75 @@ export default class Lattice extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            searchBarText : "",
+            barlist : null,
+            userListWithJson: null,
+            max: 0,
+            index: 0,
             dimContent : false,
-            barlist : [],
-            max: 0
         };
-        this.data = [
-            {
-                score: 50,
-                name: '김',
-            },
-            {
-                score: 10,
-                name: '조',
-            },
-            {
-                score: 40,
-                name: '최',
-            },
-            {
-                score: 98,
-                name: '이',
-            },
-            {
-                score: 69,
-                name: '문',
-            },
-            {
-                score: 37,
-                name: '남궁',
-            },
-            {
-                score: 99,
-                name: '민',
-            },
-            {
-                score: 102,
-                name: '엄',
-            },
-            {
-                score: 284,
-                name: '고',
-            },
-            {
-                score: 70,
-                name: '구',
-            },
-            {
-                score: 70,
-                name: '배',
-            },
-
-        ].sort((a,b) => b.score - a.score)
     }
     
-    getBarList() {
+    componentDidMount() {
+        this.getBarList();
+    }
+
+    getBarList = async() => {
         // data를 가져와서 for문으로 list를 만들자
-        for(datum of this.data){
+        this.setState({
+            barlist: null
+        });
+        let response = await fetch('http://117.17.158.93:3000/auth/list');
+        let responseJson = await response.json();
+        console.log(responseJson);
+
+        this.setState({
+            userListWithJson: responseJson
+        })
+
+        var userList = [];
+        for(datum of responseJson){
             if(this.state.max < datum.score){
                 this.state.max = datum.score;
             }
         }
-
-        var i = 0 
-        if(this.state.searchBarText){
-            console.log("search")
-            for (datum of this.data){
-                if(this.state.searchBarText === datum.name){
-                    console.log()
-                    this.state.barlist.push(
-                        <Bar score={datum.score} label={datum.name} max = {this.state.max} key = {i}/>
-                    )
-                }
-                i++;
-            }
-        }
-        else{
-            console.log("normal")
-            for(datum of this.data){
-                this.state.barlist.push(
-                    <Bar score={datum.score} label={datum.name} max = {this.state.max} key = {i}/>
-                );
-                i++;
-            }
+        
+        
+        for(datum of responseJson){
+            userList.push(
+                <Bar score={datum.score} label={datum.name} max = {this.state.max} key = {this.state.index}/>
+            );
+            this.setState({index: this.state.index + 1})
         }
         
         
-        return this.state.barlist;
+        this.setState({
+            barlist: userList
+        })
     }
 
     handleChange = (searchBarText) => {
+        var userList = [];
         this.setState({
-            searchBarText:searchBarText, 
-            barlist:[]
-        })
-    }
-    handleCancel = () => {
-        if(this.search != null)
-            this.search.focus()
+            barlist: null
+        });
+        if(searchBarText){
+            for (datum of this.state.userListWithJson){
+                if(datum.name.match(searchBarText)){
+                    userList.push(
+                        <Bar score={datum.score} label={datum.name} max = {this.state.max} key = {this.state.index}/>
+                    )
+                    this.setState({index: this.state.index + 1})
+                }
+            }
+        }
+
+        this.setState({
+            barlist: userList
+        });
     }
 
-    handleOnClearText () {
-        this.setState({
-            searchBarText : ""
-        })
-        this.search.focus()
+    handleSearchClear = () => {
+        this.getBarList()
     }
 
     render(){
@@ -127,15 +91,15 @@ export default class Lattice extends React.Component{
                 <SearchBar containerStyle={{backgroundColor: 'white'}}
                     round
                     platform={Platform.OS === "ios" ? "ios" : "android"}
-                    cancelButtonTitle="Cancel"
-                    placeholder='Search'
-                    onChangeText    ={ (searchBarText) => this.handleChange(searchBarText)}
+                    cancelButtonTitle= "Cancel"
+                    placeholder     = 'Search'
+                    onClear={this.handleSearchClear}
+                    onChangeText    = { (searchBarText) => this.handleChange(searchBarText)}
                 />
                 
-                {this.getBarList()}
+                {this.state.barlist}
             </ScrollView>
         );
-        //}
     }
 }
 

@@ -15,14 +15,14 @@ export default class App extends React.Component {
   render() {
     
     const barWidth = Dimensions.get('screen').width - 100;
- 
     return (
+      
       <View style={styles.container}>
         <View>
           <Text style={styles.label}>{this.props.label}</Text>
           <ProgressBarAnimated
             width={barWidth}
-            value={Math.floor(this.props.score / this.props.max * 100)}
+            value={Math.round(this.props.score / this.props.max * 100)}
             backgroundColorOnComplete="#6CC644"
           />
         </View>
