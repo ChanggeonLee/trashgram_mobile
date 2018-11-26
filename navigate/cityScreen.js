@@ -2,8 +2,7 @@ import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native'
 import { Header } from 'react-native-elements'
 
-import Graph from '../component/graph_1'
-import Graph2 from '../component/graph_2'
+import BarList from '../component/barList'
 
 export default class HomeScreen extends React.Component {
   render() {
@@ -13,8 +12,7 @@ export default class HomeScreen extends React.Component {
           centerComponent={{ text: 'TrashGram', style: { color: 'black' } }}
           backgroundColor="#FFFFFF"            
         />
-        <Graph />  
-        <Graph2 />
+        <BarList />  
         {/* <Tap /> */}
       </View>
     );
