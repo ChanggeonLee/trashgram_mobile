@@ -56,7 +56,7 @@ class CameraRoute extends Component {
     // this.setState({token: userToken});
     if(userId){
       console.log(userId);
-      await fetch('http://117.17.158.93:3000/hashtag', {
+      let response = await fetch('http://117.17.158.93:3000/hashtag', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -69,8 +69,10 @@ class CameraRoute extends Component {
           path : this.state.path,
         }),
       });
+      let responseJson = await response.json();
+      console.log(responseJson);
         
-    this.props.navigation.navigate('AuthLoading');
+    this.props.navigation.navigate('RecycleScreen');
     }
   }
 

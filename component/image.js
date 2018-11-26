@@ -1,12 +1,10 @@
 import React from 'react'
 import {
-  View,
   StyleSheet,
-  Image,
   Text
 } from 'react-native'
-import {  } from 'react-native'
-import { Card, ListItem, Button } from 'react-native-elements'
+
+import { Card} from 'react-native-elements'
 
 export default class Lattice extends React.Component{
 
