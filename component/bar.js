@@ -20,11 +20,14 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <View>
           <Text style={styles.label}>{this.props.label}</Text>
-          <ProgressBarAnimated
-            width={barWidth}
-            value={Math.round(this.props.score / this.props.max * 100)}
-            backgroundColorOnComplete="#6CC644"
-          />
+          <View style={{flexDirection: 'row'}}>
+            <ProgressBarAnimated
+              width={barWidth}
+              value={Math.round(this.props.score / this.props.max * 100)}
+              backgroundColorOnComplete="#6CC644"
+            />
+            <Text style={styles.bar}>  {this.props.score}</Text>
+          </View>
         </View>
       </View>
     );
@@ -32,6 +35,14 @@ export default class App extends React.Component {
 }
  
 const styles = StyleSheet.create({
+  bar:{
+    //alignSelf: 'flex-end',
+    color: '#000',
+    fontSize: 16,
+    marginTop:0,
+    paddingTop:0
+  },
+
   container: {
     flex: 1,
     backgroundColor: '#FFF',
@@ -48,8 +59,8 @@ const styles = StyleSheet.create({
     borderColor: '#DCDCDC',
   },
   label: {
-    color: '#999',
-    fontSize: 14,
+    color: '#000',
+    fontSize: 18,
     marginBottom: 10,
   },
 });
