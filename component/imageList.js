@@ -33,7 +33,7 @@ export default class Lattice extends React.Component{
       );     
       i++; 
     }
-
+    console.log(imagelist)
     this.setState({list:imagelist});
 
     return imagelist;

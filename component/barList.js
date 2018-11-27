@@ -35,7 +35,7 @@ export default class Lattice extends React.Component{
         console.log(responseJson);
 
         this.setState({
-            userListWithJson: responseJson
+            userListWithJson: responseJson.sort((a,b) => b.score - a.score)
         })
 
         var userList = [];
@@ -52,7 +52,6 @@ export default class Lattice extends React.Component{
             );
             this.setState({index: this.state.index + 1})
         }
-        
         
         this.setState({
             barlist: userList
