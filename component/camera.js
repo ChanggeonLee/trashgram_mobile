@@ -70,9 +70,8 @@ class CameraRoute extends Component {
         }),
       });
       let responseJson = await response.json();
-      console.log(responseJson);
-        
-    this.props.navigation.navigate('RecycleScreen');
+      console.log(responseJson);    
+      this.props.navigation.navigate('RecycleScreen',{imgurl:responseJson.recycleimg});
     }
   }
 

@@ -1,11 +1,16 @@
 import React from 'react';
-import { View, StyleSheet, Image} from 'react-native';
+import { View, StyleSheet, Image, Dimensions} from 'react-native';
 import { Header } from 'react-native-elements';
-// import { withNavigation} from 'react-navigation';
 
+const deviceW = Dimensions.get('window').width
 
 export default class RecycleScreen extends React.Component {
+
   render() {
+    const { navigation } = this.props;
+    const imgurl = navigation.getParam('imgurl');
+    const path = 'http://117.17.158.93:3000/'+imgurl;
+
     return (    
       <View style={ styles.container}>  
         <Header
@@ -14,7 +19,8 @@ export default class RecycleScreen extends React.Component {
           backgroundColor="#FFFFFF"            
         />
         <Image
-          source={{uri:'http://117.17.158.93:3000/'+ this.props.path}}
+          style={{ flex: 1, width: deviceW }}
+          source={{uri: path}}
         />
       </View>
     );
