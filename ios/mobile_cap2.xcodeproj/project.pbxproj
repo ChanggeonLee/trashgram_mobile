@@ -58,6 +58,7 @@
 		8ED1543F2191C4F80071BBBA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED1543E2191C4F80071BBBA /* FBSDKLoginKit.framework */; };
 		8ED154412191C50A0071BBBA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED154402191C50A0071BBBA /* Bolts.framework */; };
 		8ED154432191C5200071BBBA /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ED154422191C5200071BBBA /* FBSDKShareKit.framework */; };
+		8EE8E04821AD56EE008CD629 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EE8E04721AD56EE008CD629 /* Assets.xcassets */; };
 		93268ECB88694A0AA544C1CF /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0030B13F00524877AC0F0376 /* MaterialCommunityIcons.ttf */; };
 		9CC87A1977FC429D9FDD7C70 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55100EA8A5BA45A097C22999 /* Entypo.ttf */; };
 		AC06CC8ABF2C4BAB923E4F08 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3D05C54F57F4F0689003591 /* AntDesign.ttf */; };
@@ -448,6 +449,7 @@
 		8ED1543E2191C4F80071BBBA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "FacebookSDKs-iOS-4.38.0/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		8ED154402191C50A0071BBBA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "FacebookSDKs-iOS-4.38.0/Bolts.framework"; sourceTree = "<group>"; };
 		8ED154422191C5200071BBBA /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "FacebookSDKs-iOS-4.38.0/FBSDKShareKit.framework"; sourceTree = "<group>"; };
+		8EE8E04721AD56EE008CD629 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9553FB04722D4D57B02604BC /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		995B712D4F9343D4BC0CA66F /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		A339082FCB6A4B30A1A33036 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
@@ -734,6 +736,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				8EE8E04721AD56EE008CD629 /* Assets.xcassets */,
 				13B07FAE1A68108700A75B9A /* mobile_cap2 */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* mobile_cap2Tests */,
@@ -1358,6 +1361,7 @@
 				77D43FAF85864C72B059B69E /* MaterialIcons.ttf in Resources */,
 				2099BB377560444782A3F01E /* Octicons.ttf in Resources */,
 				329FD27E922F44E4B1D0557A /* SimpleLineIcons.ttf in Resources */,
+				8EE8E04821AD56EE008CD629 /* Assets.xcassets in Resources */,
 				177AD6988DB142559C98FA5C /* Zocial.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1543,6 +1547,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1583,6 +1588,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;

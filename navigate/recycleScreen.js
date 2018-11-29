@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Image, Dimensions} from 'react-native';
+import { View, StyleSheet, Image, Dimensions, Text} from 'react-native';
 import { Header } from 'react-native-elements';
 
 const deviceW = Dimensions.get('window').width
@@ -18,10 +18,14 @@ export default class RecycleScreen extends React.Component {
           centerComponent={{ text: 'TrashGram', style: { color: 'black' } }}                              
           backgroundColor="#FFFFFF"            
         />
-        <Image
-          style={{ flex: 1, width: deviceW }}
-          source={{uri: path}}
-        />
+        <View style={ styles.imagecontainer}>
+          <Image
+            style={styles.image}
+            source={{uri: path}}
+          />
+          <Text style={styles.info}>주위 분리수거 쓰레기통에</Text>
+          <Text style={styles.info}>꼭 버려 주세요~!!!</Text>
+        </View>        
       </View>
     );
   }
@@ -29,8 +33,22 @@ export default class RecycleScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container:
-    {
-        flex: 1,
-        width: '100%',         
-    },
+  {
+    flex: 1,
+    width: '100%',             
+  },
+  imagecontainer:{
+    flex:1,
+    // justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image:
+  {
+    width: 400,
+    height: 400,
+    margin: 20,
+  },
+  info:{
+    fontSize: 20,
+  }
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, AsyncStorage } from 'react-native'
+import { View, Text, Button, StyleSheet, AsyncStorage, Image} from 'react-native'
 import { LoginButton, AccessToken } from 'react-native-fbsdk';
 import { withNavigation } from 'react-navigation'
 
@@ -43,7 +43,8 @@ class LoginScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.label}>Welcome to the Facebook SDK for React Native!</Text>
+        {/* <Text style={styles.label}>Welcome to the Facebook SDK for React Native!</Text> */}
+        <Image style={styles.label} source={require('../src/img/trashgram.png')}></Image>
         <LoginButton 
           readPermissions={["public_profile","email"]}
           onLoginFinished={
@@ -72,12 +73,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
   label: {
-    fontSize: 16,
+    
     fontWeight: 'normal',
     marginBottom: 48,
   },
