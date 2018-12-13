@@ -51,6 +51,7 @@ class LoginScreen extends React.Component {
             () => {             
               AccessToken.getCurrentAccessToken().then(
                 async (data) => {
+                  console.log(data);
                   this.setState({ token: data.accessToken});                  
                   let response = await fetch('https://graph.facebook.com/v2.5/me?fields=email,name,picture&access_token='+this.state.token);
                   let responseJson = await response.json();                  
